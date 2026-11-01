@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "luthier"
+version = "0.2.0"
+description = "Simulate musical instruments before building them: shell-FEM body modes, string/body coupling, wolf tones, design search."
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26", "scipy>=1.11", "shapely>=2.0"]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.7"]
+cad = ["trimesh>=4.0"]          # only needed for STL/PLY import (OBJ uses the built-in reader)
+wind = ["gmsh>=4.11"]            # 3-D air meshing for the recorder module
+dev = ["pytest>=7", "matplotlib>=3.7", "trimesh>=4.0", "gmsh>=4.11"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
